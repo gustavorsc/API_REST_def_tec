@@ -14,8 +14,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Rotas
-app.use('/api/produtos', ProdutoRoute);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
+app.use('/produtos', ProdutoRoute);
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 // Conexão com MongoDB Atlas
 const DB_USER = process.env.DB_USER || 'Gustavo';
