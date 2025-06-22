@@ -5,7 +5,7 @@ require('dotenv').config();
 
 const ProdutoRoute = require('./routes/ProdutoRoute');
 const swaggerUi = require('swagger-ui-express');
-const swaggerFile = require('./swagger.json');
+const swaggerFile = require('./Swagger.json');
 
 // Middlewares
 server.use(express.json());
