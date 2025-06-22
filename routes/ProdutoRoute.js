@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Produto = require('../models/Produto');
+const mongoose = require('mongoose');
 
 // CREATE – Cadastrar produto
 router.post('/', (req, res) => {
@@ -25,18 +26,27 @@ router.get('/', (req, res) => {
 
 // READ – Buscar por ID ou Nome
 router.get('/:param', (req, res) => {
-    const { param } = req.params;
+  const { param } = req.params;
 
-    Produto.findOne({
-        $or: [{ _id: param }, { nome: param }]
+  const isValidId = mongoose.Types.ObjectId.isValid(param);
+
+  let query;
+  if (isValidId) {
+    query = {
+      $or: [{ _id: param }, { nome: param }]
+    };
+  } else {
+    query = { nome: param };
+  }
+
+  Produto.findOne(query)
+    .then(produto => {
+      if (!produto) {
+        return res.status(404).json({ message: 'Produto não encontrado.' });
+      }
+      res.status(200).json(produto);
     })
-        .then(produto => {
-            if (!produto) {
-                return res.status(404).json({ message: 'Produto não encontrado.' });
-            }
-            res.status(200).json(produto);
-        })
-        .catch(error => res.status(500).json({ error: error.message }));
+    .catch(error => res.status(500).json({ error: error.message }));
 });
 
 // UPDATE – Atualizar produto

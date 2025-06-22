@@ -3,9 +3,9 @@ const mongoose = require('mongoose');
 const server = express();
 require('dotenv').config();
 
-const ProdutoRoute = require('./routes/ProdutoRoute');
+const ProdutoRoute = require('../routes/ProdutoRoute');
 const swaggerUi = require('swagger-ui-express');
-const swaggerFile = require('./swagger.json');
+const swaggerFile = require('../swagger.json');
 
 // Middlewares
 server.use(express.json());

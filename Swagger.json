@@ -1,0 +1,153 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API de Produtos - Loja Franca",
+    "version": "1.0.0",
+    "description": "API REST para gerenciamento de produtos usando Node.js e MongoDB Atlas."
+  },
+  "servers": [
+    {
+      "url": "https://SEU-LINK-DE-DEPLOY/api/produtos",
+      "description": "Servidor da API"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Listar todos os produtos",
+        "responses": {
+          "200": {
+            "description": "Lista completa dos produtos",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "_id": "665a7e2b8dcb9e00123abcde",
+                    "nome": "Camiseta",
+                    "descricao": "Camiseta de algodão",
+                    "cor": "Azul",
+                    "peso": 0.2,
+                    "tipo": "Vestuário",
+                    "preco": 49.9,
+                    "dataCadastro": "2024-06-01T12:00:00.000Z"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Cadastrar um novo produto",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "nome": "Tênis",
+                "descricao": "Tênis esportivo confortável",
+                "cor": "Branco",
+                "peso": 1.0,
+                "tipo": "Calçado",
+                "preco": 199.99
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Produto cadastrado com sucesso"
+          },
+          "422": {
+            "description": "Erro de validação"
+          }
+        }
+      }
+    },
+    "/{param}": {
+      "get": {
+        "summary": "Buscar um produto por ID ou nome",
+        "parameters": [
+          {
+            "name": "param",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID ou nome do produto"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Produto encontrado"
+          },
+          "404": {
+            "description": "Produto não encontrado"
+          }
+        }
+      }
+    },
+    "/{id}": {
+      "put": {
+        "summary": "Atualizar um produto existente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID do produto"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "nome": "Camiseta Premium",
+                "descricao": "Camiseta com tecido especial",
+                "cor": "Preta",
+                "peso": 0.3,
+                "tipo": "Vestuário",
+                "preco": 59.9
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Produto atualizado com sucesso"
+          },
+          "404": {
+            "description": "Produto não encontrado"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletar um produto",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID do produto"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Produto deletado com sucesso"
+          },
+          "404": {
+            "description": "Produto não encontrado"
+          }
+        }
+      }
+    }
+  }
+}
