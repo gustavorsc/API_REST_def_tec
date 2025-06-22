@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://SEU-LINK-DE-DEPLOY/api/produtos",
+      "url": "https://api-rest-def-tec.onrender.com",
       "description": "Servidor da API"
     }
   ],
