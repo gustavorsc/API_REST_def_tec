@@ -15,12 +15,8 @@ server.use(express.urlencoded({ extended: true }));
 server.use('/api/produtos', ProdutoRoute); 
 server.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile)); 
 
-// Conexão com MongoDB Atlas usando variáveis do .env
-const DB_USER = process.env.DB_USER || 'Gustavo';
-const DB_PASSWORD = encodeURIComponent(process.env.DB_PASSWORD || 'Gugu1409@');
-const DB_NAME = process.env.DB_NAME || 'APITrabalho';
 
-const mongoUri = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@apitrabalho.uc2yywz.mongodb.net/${DB_NAME}?retryWrites=true&w=majority&appName=APITrabalho`;
+const mongoUri = 'mongodb+srv://Gustavo:P5TQ5TwgnE4KVr8@trabapi.x5mn59x.mongodb.net/?retryWrites=true&w=majority&appName=TrabApi';
 
 mongoose.connect(mongoUri, {
   useNewUrlParser: true,
@@ -30,6 +26,7 @@ mongoose.connect(mongoUri, {
   console.log('Conectado ao MongoDB');
   server.listen(process.env.PORT || 3000, () => {
     console.log(`Servidor rodando na porta ${process.env.PORT || 3000}`);
+    console.log(mongoUri);
   });
 })
 .catch((err) => {
