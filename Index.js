@@ -26,7 +26,6 @@ mongoose.connect(mongoUri, {
   console.log('Conectado ao MongoDB');
   server.listen(process.env.PORT || 3000, () => {
     console.log(`Servidor rodando na porta ${process.env.PORT || 3000}`);
-    console.log(mongoUri);
   });
 })
 .catch((err) => {
