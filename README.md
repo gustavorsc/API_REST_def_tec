@@ -3,7 +3,7 @@
 Esta é uma API RESTful construída com **Node.js**, **Express** e **MongoDB Atlas** para o gerenciamento de produtos de uma loja. Documentada com **Swagger** e implantada na **Vercel**.
 
 ## 🔗 Link da API (Vercel)
-Acesse: [https://api-rest-def-tec.onrender.com/api-docs](https://api-rest-def-tec.onrender.com/api-docs)
+Acesse: [https://api-rest-def-tec.onrender.com/api-docs](https://api-rest-def-tec.onrender.com/api-docs/)
 
 ## 🚀 Funcionalidades da API
 
@@ -71,7 +71,7 @@ PORT=3000
 ## 📄 Documentação Swagger
 
 Acesse a documentação Swagger na rota:
-https://api-rest-def-tec.onrender.com/api-docs
+[https://api-rest-def-tec.onrender.com/api-docs](https://api-rest-def-tec.onrender.com/api-docs/)
 
 
 Feito com 💻 por Gustavo Soares
